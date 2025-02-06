@@ -81,6 +81,7 @@ class _LoginState extends State<Login> {
                 height: 15,
               ),
             CustomTextField(
+              obscureText: true,
               onChanged: (data){
                 password = data;
               },
@@ -98,7 +99,7 @@ class _LoginState extends State<Login> {
             try {
               await userLogin();
               // ShowSnakBar(context,'Success');
-              Navigator.pushNamed(context, 'Chat Page');
+              Navigator.pushNamed(context, 'Chat Page',arguments: email);
                 } on FirebaseAuthException catch (e) {
               if (e.code == "wrong-password") {
                     ShowSnakBar(context,'Wrong Password');
